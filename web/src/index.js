@@ -3,24 +3,24 @@
 
 const proto = {
   create () {
-    const node = document.createElement('div');
-    this.inner = document.createElement('img');
-    this.inner.style.marginBottom = '5px';
-    node.style.padding = "5px 5px 20px 5px"; 
-    node.style.border = '1px solid #ddd;';
-    node.style.boxShadow = '0 2px 5px rgba(0,0,0,.15)';
-    node.style.textAlign = "center"; 
-    node.appendChild(this.inner);
-    this.text = document.createTextNode(this.value);
-    node.appendChild(this.text)
-    return node
+    this.node = document.createElement('div');
+    this.inner = new Image();
+    this.inner.style.marginBottom = '10px';
+    this.node.style.padding = "5px 5px 10px 5px"; 
+    this.node.style.textAlign = "center"; 
+    this.node.style.border = '1px solid #ccc';
+    this.node.appendChild(this.inner);
+    this.node.appendChild(document.createElement('div'));
+  
+    return this.node 
   }
 }
 
 // attribute setters.
 const attr = {
   text (val) {
-    this.value = val
+    let text = document.createTextNode(val);
+    this.node.appendChild(text);
   },
   
   imgsrc(val) {
